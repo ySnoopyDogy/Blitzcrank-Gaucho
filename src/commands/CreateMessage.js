@@ -51,8 +51,18 @@ module.exports = {
       .setMaxLength(4000)
       .setRequired(true)
 
+    const colorInput = new TextInputBuilder()
+      .setLabel('Cor')
+      .setCustomId('color')
+      .setValue('#d135f9')
+      .setPlaceholder('#d135f9')
+      .setStyle(TextInputStyle.Short)
+      .setMinLength(7)
+      .setMaxLength(7)
+      .setRequired(false)
+
     const modal = new ModalBuilder().setTitle('Criação da Mensagem').setCustomId(`${interaction.id} MODAL`)
-      .addComponents({ type: 1, components: [titleInput] }, { type: 1, components: [descriptionInput] })
+      .addComponents({ type: 1, components: [titleInput] }, { type: 1, components: [descriptionInput] }, { type: 1, components: [colorInput] })
 
     interaction.showModal(modal).catch(() => null)
 
@@ -64,12 +74,13 @@ module.exports = {
 
     collected.reply({ content: 'Mensagem enviada!', ephemeral: true }).catch(() => null)
 
-    const title = collected.fields.getField('title')
-    const description = collected.fields.getField('description')
+    const title = collected.fields.getTextInputValue('title')
+    const description = collected.fields.getTextInputValue('description')
+    const color = collected.fields.getField('color').value.length < 7 ? '#d135f9' : collected.fields.getField('color').value
 
-    const embed = new EmbedBuilder().setTitle(title.value)
-      .setColor('#b17ef0')
-      .setDescription(description.value)
+    const embed = new EmbedBuilder().setTitle(title)
+      .setColor(color)
+      .setDescription(description)
 
     if (imagem) embed.setImage(imagem.url)
 
