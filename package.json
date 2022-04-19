@@ -1,0 +1,17 @@
+{
+  "name": "blitzcrank_gaucho",
+  "description": "Um pequeno bot para uma comunidade de MonoChamps Gaúchos do LoL",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Luxanna <luxanna@menherabot.xyz>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config .",
+    "deploy": "DEPLOY=true yarn start"
+  },
+  "dependencies": {
+    "discord.js": "^14.0.0-dev.1650240532-9ef7ffd",
+    "dotenv": "^16.0.0",
+    "string-similarity": "^4.0.4"
+  }
+}
