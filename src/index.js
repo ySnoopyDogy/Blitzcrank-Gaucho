@@ -1,4 +1,3 @@
-require('./LolApi')
 const { Client, GatewayIntentBits, Collection, ActivityType } = require("discord.js");
 const { readdirSync } = require('fs')
 const { join, resolve } = require('path');
