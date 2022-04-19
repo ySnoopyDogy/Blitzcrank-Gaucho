@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node -r dotenv/config .",
-    "deploy": "DEPLOY=true yarn start"
+    "deploy": "DEPLOY=true yarn start",
+    "docker": "docker build -t blitz . && docker run -d --restart unless-stopped --name blitz blitz"
   },
   "dependencies": {
     "discord.js": "^14.0.0-dev.1650240532-9ef7ffd",
